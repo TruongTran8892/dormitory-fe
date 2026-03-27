@@ -1,0 +1,18 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="zaloBg" x1="8" y1="6" x2="56" y2="58" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F7F9FC"/>
+      <stop offset="1" stop-color="#DCE7F7"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="url(#zaloBg)"/>
+  <path
+    d="M12 46.5C12 42.3579 15.3579 39 19.5 39H44.5C48.6421 39 52 42.3579 52 46.5V50.5C52 52.433 50.433 54 48.5 54H22L15.8 58C14.5 58.8 12.8 57.9 12.8 56.4V46.5H12Z"
+    fill="#2E7BFF"
+    opacity="0.9"
+  />
+  <text x="32" y="34" text-anchor="middle" fill="#0068FF" font-size="17" font-weight="700" font-family="Arial, Helvetica, sans-serif">
+    Zalo
+  </text>
+</svg>

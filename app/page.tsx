@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import BookingForm from "./components/BookingForm";
+import ExperienceSlideshow from "./components/ExperienceSlideshow";
 
 export const metadata: Metadata = {
   title: "Trang chủ",
@@ -46,7 +48,7 @@ export default function Home() {
             </a>
           </div>
           <a
-            href="tel:0900123456"
+            href="tel:0938453548"
             className="border border-premium-gold text-premium-gold px-6 py-2 rounded-full font-bold text-sm hover:bg-premium-gold hover:text-white transition tracking-widest uppercase"
           >
             TƯ VẤN NGAY
@@ -55,10 +57,13 @@ export default function Home() {
       </header>
 
       <section className="relative min-h-[90vh] flex items-center overflow-hidden">
-        <img
-          src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&q=80&w=2000"
+        <Image
+          src="/experience/exp-1.jpg"
+          alt="Không gian nội thất ký túc xá tại Nấm's Dormitory"
+          fill
+          priority
+          sizes="100vw"
           className="absolute inset-0 w-full h-full object-cover"
-          alt="Không gian nội thất ký túc xá"
         />
         <div className="absolute inset-0 hero-overlay" />
 
@@ -71,9 +76,13 @@ export default function Home() {
               <span className="block not-italic font-black text-white whitespace-nowrap drop-shadow-[0_4px_16px_rgba(0,0,0,0.38)]">
                 Ký túc xá & Căn hộ dịch vụ
               </span>
-              <span className="block text-white/95 italic font-semibold mt-1">
-                <span className="text-[#E7C98A] font-bold">&quot;Chilling&quot;</span>{" "}
-                <span className="whitespace-nowrap drop-shadow-[0_2px_10px_rgba(0,0,0,0.34)]">đỉnh cao.</span>
+              <span className="block text-white font-black tracking-[0.005em] mt-3 text-[1.08em] md:text-[1.16em] leading-none">
+                <span className="text-[#F3D9A6] font-black [text-shadow:-0.6px_0_0_rgba(0,0,0,0.7),0.6px_0_0_rgba(0,0,0,0.7),0_-0.6px_0_rgba(0,0,0,0.7),0_0.6px_0_rgba(0,0,0,0.7),0_2px_8px_rgba(0,0,0,0.35)] md:[text-shadow:-1px_0_0_rgba(0,0,0,0.85),1px_0_0_rgba(0,0,0,0.85),0_-1px_0_rgba(0,0,0,0.85),0_1px_0_rgba(0,0,0,0.85),-1px_-1px_0_rgba(0,0,0,0.75),1px_1px_0_rgba(0,0,0,0.75),-1px_1px_0_rgba(0,0,0,0.75),1px_-1px_0_rgba(0,0,0,0.75),0_4px_14px_rgba(0,0,0,0.5)]">
+                  &quot;Chilling&quot;
+                </span>{" "}
+                <span className="whitespace-nowrap font-black [text-shadow:-0.6px_0_0_rgba(0,0,0,0.78),0.6px_0_0_rgba(0,0,0,0.78),0_-0.6px_0_rgba(0,0,0,0.78),0_0.6px_0_rgba(0,0,0,0.78),0_2px_8px_rgba(0,0,0,0.35)] md:[text-shadow:-1px_0_0_rgba(0,0,0,0.95),1px_0_0_rgba(0,0,0,0.95),0_-1px_0_rgba(0,0,0,0.95),0_1px_0_rgba(0,0,0,0.95),-1px_-1px_0_rgba(0,0,0,0.85),1px_1px_0_rgba(0,0,0,0.85),-1px_1px_0_rgba(0,0,0,0.85),1px_-1px_0_rgba(0,0,0,0.85),0_4px_14px_rgba(0,0,0,0.5),0_0_1px_rgba(255,255,255,0.2)]">
+                  đỉnh cao.
+                </span>
               </span>
             </h1>
             <p className="text-base md:text-xl mb-12 text-stone-200 leading-relaxed font-normal max-w-2xl border-l-2 border-premium-gold/80 pl-6">
@@ -91,6 +100,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <ExperienceSlideshow />
 
       <section id="pod-details" className="py-24 bg-[#F5F2ED]">
         <div className="container mx-auto px-6">
@@ -210,56 +221,37 @@ export default function Home() {
             <h2 className="text-4xl md:text-5xl font-bold mb-8 leading-tight italic">
               Chốt chỗ ngay, <br />
               <span className="text-premium-gold not-italic">
-                Nhận ưu đãi{" "}
-                <span className="italic underline decoration-1 decoration-premium-gold">
-                  Free Chuyển Đồ.
-                </span>
+                Nhận ưu đãi hấp dẫn.
               </span>
             </h2>
             <p className="text-stone-400 mb-12 font-light">
               Số lượng Pod Private có hạn tại Thủ Đức. Hãy điền thông tin bên dưới để được ưu
               tiên dẫn xem thực tế và nhận tư vấn gói dịch vụ Bao trọn gói.
             </p>
+            <div className="space-y-2 text-stone-200 text-sm md:text-base font-medium">
+              <p className="flex items-center gap-2">
+                <Image src="/zalo-logo.svg" alt="" aria-hidden="true" width={20} height={20} />
+                <span>
+                  Zalo:{" "}
+                  <a className="text-premium-gold hover:underline" href="https://zalo.me/0938453548">
+                    0938453548
+                  </a>
+                </span>
+              </p>
+              <p className="flex items-center gap-2">
+                <Image src="/phone-logo.svg" alt="" aria-hidden="true" width={20} height={20} />
+                <span>
+                  Điện thoại:{" "}
+                  <a className="text-premium-gold hover:underline" href="tel:0938453548">
+                    0938453548
+                  </a>
+                </span>
+              </p>
+            </div>
           </div>
 
-          <div className="bg-white p-10 lg:p-14 rounded-sm shadow-2xl text-neutral-900">
-            <form className="space-y-6">
-              <div>
-                <label className="block text-[10px] font-bold uppercase tracking-widest mb-2 text-stone-400">
-                  Danh xưng
-                </label>
-                <input
-                  type="text"
-                  placeholder="Nguyễn Văn A"
-                  className="w-full border-b border-stone-200 py-3 focus:border-premium-gold outline-none transition text-sm"
-                />
-              </div>
-              <div>
-                <label className="block text-[10px] font-bold uppercase tracking-widest mb-2 text-stone-400">
-                  Phương thức liên hệ
-                </label>
-                <input
-                  type="tel"
-                  placeholder="0901 234 567 / Zalo"
-                  className="w-full border-b border-stone-200 py-3 focus:border-premium-gold outline-none transition text-sm"
-                />
-              </div>
-              <div>
-                <label className="block text-[10px] font-bold uppercase tracking-widest mb-2 text-stone-400">
-                  Trường đang theo học
-                </label>
-                <select className="w-full border-b border-stone-200 py-3 focus:border-premium-gold outline-none transition text-sm bg-transparent">
-                  <option>ĐH Ngân hàng</option>
-                  <option>Cao đẳng Công nghệ</option>
-                  <option>ĐH An ninh nhân dân</option>
-                  <option>ĐH SPKT</option>
-                  <option>Khác</option>
-                </select>
-              </div>
-              <button className="w-full bg-premium-dark text-white py-5 mt-4 text-[11px] font-bold tracking-[0.3em] uppercase hover:bg-premium-gold transition duration-500">
-                Đăng ký xem Pod & Tư vấn
-              </button>
-            </form>
+          <div className="bg-white p-10 lg:p-14 rounded-2xl border border-stone-100 shadow-2xl text-neutral-900">
+            <BookingForm />
           </div>
         </div>
       </section>

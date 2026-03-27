@@ -1,0 +1,12 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="phoneBg" x1="8" y1="6" x2="56" y2="58" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F7F9FC"/>
+      <stop offset="1" stop-color="#DCE7F7"/>
+    </linearGradient>
+  </defs>
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="url(#phoneBg)"/>
+  <rect x="14" y="12" width="36" height="40" rx="10" fill="#2E7BFF" opacity="0.95"/>
+  <path d="M26 23C26 19.6863 28.6863 17 32 17C35.3137 17 38 19.6863 38 23V41C38 44.3137 35.3137 47 32 47C28.6863 47 26 44.3137 26 41V23Z" fill="white"/>
+  <circle cx="32" cy="41" r="2.2" fill="#2E7BFF"/>
+</svg>
