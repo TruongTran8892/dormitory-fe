@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="520" height="96" viewBox="0 0 520 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#D4B06A"/>
+      <stop offset="100%" stop-color="#B9914E"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="4" y="8" width="80" height="80" rx="24" fill="#1A1A1A"/>
+  <path d="M44 30C31.6 30 22 38.6 22 49.5C22 52.1 24.2 54 26.8 54H61.2C63.8 54 66 52.1 66 49.5C66 38.6 56.4 30 44 30Z" fill="url(#gold)"/>
+  <rect x="38" y="52" width="12" height="22" rx="6" fill="#EFE7DA"/>
+  <circle cx="33.5" cy="43.5" r="3.5" fill="#1A1A1A"/>
+  <circle cx="44" cy="40" r="3" fill="#1A1A1A"/>
+  <circle cx="54.5" cy="43.5" r="3.5" fill="#1A1A1A"/>
+
+  <text x="100" y="45" fill="#171717" font-family="'Plus Jakarta Sans', 'Inter', sans-serif" font-weight="800" font-size="36" letter-spacing="-0.02em">N&#7845;m&apos;s</text>
+  <text x="220" y="45" fill="url(#gold)" font-family="'Plus Jakarta Sans', 'Inter', sans-serif" font-weight="800" font-size="36" letter-spacing="-0.01em">Dormitory</text>
+
+  <path d="M100 56H458" stroke="#C5A059" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+  <text x="100" y="76" fill="#6B7280" font-family="'Plus Jakarta Sans', 'Inter', sans-serif" font-weight="600" font-size="12" letter-spacing="0.25em">STUDENT HOUSING</text>
+</svg>

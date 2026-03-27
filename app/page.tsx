@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Trang chủ",
@@ -20,11 +21,15 @@ export default function Home() {
     <div className="text-neutral-800">
       <header className="fixed w-full z-[100] bg-[#FCFAf7]/90 backdrop-blur-md border-b border-stone-200 shadow-sm">
         <nav className="container mx-auto px-6 py-5 flex justify-between items-center">
-          <a href="#" className="text-2xl font-extrabold tracking-tighter text-neutral-900 cursor-pointer">
-            LUMIERE
-            <span className="text-premium-gold ml-0.5 underline decoration-1 underline-offset-4">
-              HOUSING
-            </span>
+          <a href="#" className="cursor-pointer">
+            <Image
+              src="/logo-nams-dom.svg"
+              alt="Nấm's Dormitory"
+              width={220}
+              height={60}
+              priority
+              className="h-12 w-auto"
+            />
           </a>
           <div className="hidden lg:flex space-x-10 font-medium text-sm uppercase tracking-[0.15em] text-neutral-600">
             <a href="/about" className="hover:text-premium-gold transition">
@@ -53,21 +58,25 @@ export default function Home() {
         <img
           src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&q=80&w=2000"
           className="absolute inset-0 w-full h-full object-cover"
-          alt="Sleepbox Interior"
+          alt="Không gian nội thất ký túc xá"
         />
         <div className="absolute inset-0 hero-overlay" />
 
         <div className="container mx-auto px-6 relative z-10 text-white">
-          <div className="max-w-3xl">
-            <p className="text-premium-gold font-semibold tracking-[0.2em] uppercase mb-4 text-xs md:text-sm">
-              KTX Thẩm mỹ & Tiện nghi bậc nhất
+          <div className="max-w-4xl">
+            <p className="text-premium-gold/95 font-semibold tracking-[0.24em] uppercase mb-5 text-[11px] md:text-sm">
+              Không gian lưu trú cao cấp & tiện nghi bậc nhất
             </p>
-            <h1 className="text-5xl md:text-8xl font-bold mb-8 leading-[1.0] italic tracking-tight">
-              Trải nghiệm <br />
-              <span className="not-italic font-black text-blue-100/10">Sleepbox</span>{" "}
-              <span className="text-premium-gold font-light">&quot;Chilling&quot;</span> đỉnh cao.
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold mb-8 md:mb-10 leading-[1.06] tracking-[-0.02em] max-w-4xl">
+              <span className="block not-italic font-black text-white whitespace-nowrap drop-shadow-[0_4px_16px_rgba(0,0,0,0.38)]">
+                Ký túc xá & Căn hộ dịch vụ
+              </span>
+              <span className="block text-white/95 italic font-semibold mt-1">
+                <span className="text-[#E7C98A] font-bold">&quot;Chilling&quot;</span>{" "}
+                <span className="whitespace-nowrap drop-shadow-[0_2px_10px_rgba(0,0,0,0.34)]">đỉnh cao.</span>
+              </span>
             </h1>
-            <p className="text-lg md:text-xl mb-12 text-stone-300 leading-relaxed font-light max-w-lg border-l border-premium-gold pl-6">
+            <p className="text-base md:text-xl mb-12 text-stone-200 leading-relaxed font-normal max-w-2xl border-l-2 border-premium-gold/80 pl-6">
               Bao trọn gói dịch vụ cao cấp, không lo phát sinh chi phí. Một không gian sống
               &quot;Xịn - Mịn - Sang&quot; dành riêng cho các bạn sinh viên văn minh.
             </p>
@@ -100,9 +109,9 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="bg-white p-8 rounded-xl card-shadow border border-stone-100 flex flex-col items-center text-center">
               <span className="text-4xl mb-6 bg-premium-dark text-white p-5 rounded-full inline-block">
-                🎁
+                🛏️
               </span>
-              <h3 className="text-xl font-bold mb-3">Sleepbox Private</h3>
+              <h3 className="text-xl font-bold mb-3">Không gian riêng tư</h3>
               <p className="text-stone-500 text-sm font-light leading-relaxed">
                 Pod ngủ riêng tư, full máy lạnh, bàn học âm, đèn đọc sách và hộc tủ riêng.
                 Không gian yên tĩnh, thẩm mỹ.
@@ -166,6 +175,9 @@ export default function Home() {
                 hữu vị trí siêu thuận tiện, nằm ngay trái tim của cụm các trường Đại học lớn tại
                 Thủ Đức/Quận 9.
               </p>
+              <p className="text-sm text-neutral-700 font-semibold mb-8">
+                Địa chỉ: 1/7B, Đường số 18, Phường Linh Chiểu, Thủ Đức
+              </p>
 
               <ul className="space-y-5 text-sm font-medium text-neutral-700 italic border-l border-premium-gold pl-6">
                 <li>📍 Gần ĐH Ngân hàng</li>
@@ -178,7 +190,7 @@ export default function Home() {
             <div className="relative">
               <div className="rounded-lg shadow-2xl h-96 overflow-hidden border-2 border-premium-dark/10 map-container">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.4602324283416!2d106.69176167623946!3d10.776019389372993!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f3af224056b%3A0x6334812f68903c72!2zRGluaCDEkOG7mWMgTOG6rXA!5e0!3m2!1svi!2s!4v1715800000000!5m2!1svi!2s"
+                  src="https://www.google.com/maps?q=1%2F7B%2C%20%C4%90%C6%B0%E1%BB%9Dng%20s%E1%BB%91%2018%2C%20Ph%C6%B0%E1%BB%9Dng%20Linh%20Chi%E1%BB%83u%2C%20Th%E1%BB%A7%20%C4%90%E1%BB%A9c&output=embed"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
@@ -256,8 +268,14 @@ export default function Home() {
         <div className="container mx-auto">
           <div className="grid md:grid-cols-3 gap-16 mb-20">
             <div>
-              <a href="#" className="text-xl font-extrabold mb-6 tracking-tight cursor-pointer block">
-                LUMIERE<span className="text-premium-gold">HOUSING</span>
+              <a href="#" className="mb-6 cursor-pointer block">
+                <Image
+                  src="/logo-nams-dom.svg"
+                  alt="Nấm's Dormitory"
+                  width={180}
+                  height={50}
+                  className="h-10 w-auto"
+                />
               </a>
               <p className="text-stone-400 text-xs leading-[2] font-light max-w-xs uppercase tracking-wider">
                 Lưu trú thẩm mỹ, an tâm học tập. Dành riêng cho sinh viên Thủ Đức.
