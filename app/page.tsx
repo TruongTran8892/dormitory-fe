@@ -1,3 +1,20 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Trang chủ",
+  description:
+    "Lumiere Housing mang đến mô hình Sleepbox KTX cao cấp tại Thủ Đức với dịch vụ bao trọn gói, không gian sống thẩm mỹ và tiện nghi cho sinh viên.",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "Lumiere Housing - Sleepbox KTX Cao Cấp Thủ Đức",
+    description:
+      "Trải nghiệm không gian sống 'Xịn - Mịn - Sang' với Sleepbox private, tiện ích đầy đủ và vị trí gần các trường đại học lớn tại Thủ Đức.",
+    url: "/",
+  },
+};
+
 export default function Home() {
   return (
     <div className="text-neutral-800">
@@ -10,7 +27,7 @@ export default function Home() {
             </span>
           </a>
           <div className="hidden lg:flex space-x-10 font-medium text-sm uppercase tracking-[0.15em] text-neutral-600">
-            <a href="#about" className="hover:text-premium-gold transition">
+            <a href="/about" className="hover:text-premium-gold transition">
               Phong cách
             </a>
             <a href="#pod-details" className="hover:text-premium-gold transition">
