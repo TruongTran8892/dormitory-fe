@@ -29,7 +29,16 @@ export default function BookingForm() {
           createdAt: new Date().toISOString(),
         }),
       });
-      if (!res.ok) throw new Error("Failed to submit");
+      const result = (await res.json()) as { ok: boolean; message?: string };
+      if (!res.ok || !result.ok) {
+        if (result?.message === "Missing GOOGLE_SHEET_WEBHOOK_URL") {
+          setStatus("Hệ thống chưa cấu hình kết nối Google Sheet. Vui lòng báo quản trị viên.");
+        } else {
+          setStatus("Gửi đăng ký chưa thành công. Vui lòng thử lại sau ít phút.");
+        }
+        setIsSubmitting(false);
+        return;
+      }
       setStatus("Đăng ký thành công! Bên mình sẽ liên hệ bạn sớm nhất.");
       setName("");
       setContact("");

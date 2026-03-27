@@ -4,14 +4,14 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Về chúng tôi",
   description:
-    "Tìm hiểu về Lumiere Housing và mô hình Sleepbox KTX cao cấp dành cho sinh viên tại Thủ Đức: riêng tư, tiện nghi và vận hành chuyên nghiệp.",
+    "Tìm hiểu về Nấm's Dormitory và mô hình ký túc xá, căn hộ dịch vụ dành cho sinh viên tại Thủ Đức: riêng tư, tiện nghi và vận hành chuyên nghiệp.",
   alternates: {
     canonical: "/about",
   },
   openGraph: {
-    title: "Về chúng tôi | Lumiere Housing",
+    title: "Về chúng tôi | Nấm's Dormitory",
     description:
-      "Khám phá sứ mệnh và định hướng của Lumiere Housing trong việc xây dựng không gian sống chất lượng cho sinh viên.",
+      "Khám phá sứ mệnh và định hướng của Nấm's Dormitory trong việc xây dựng không gian sống chất lượng cho sinh viên.",
     url: "/about",
   },
 };
@@ -24,17 +24,17 @@ export default function AboutPage() {
           About Us
         </p>
         <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-neutral-900 mb-8">
-          Lumiere Housing
+          Nấm&apos;s Dormitory
         </h1>
         <div className="max-w-3xl space-y-6 text-stone-600 leading-relaxed">
           <p>
-            Lumiere Housing được xây dựng với mục tiêu mang đến không gian sống hiện đại, an toàn
+            Nấm&apos;s Dormitory được xây dựng với mục tiêu mang đến không gian sống hiện đại, an toàn
             và tiện nghi cho sinh viên tại Thủ Đức. Chúng tôi tập trung vào trải nghiệm ở thực tế:
             riêng tư, sạch sẽ, vận hành ổn định và dịch vụ rõ ràng.
           </p>
           <p>
-            Mô hình Sleepbox tại Lumiere tối ưu cho học tập và nghỉ ngơi, đồng thời vẫn giữ được
-            sự kết nối cộng đồng qua các khu sinh hoạt chung. Mọi tiện ích thiết yếu đều được thiết
+            Mô hình ký túc xá và căn hộ dịch vụ tại đây tối ưu cho học tập và nghỉ ngơi, đồng thời
+            vẫn giữ được sự kết nối cộng đồng qua các khu sinh hoạt chung. Mọi tiện ích thiết yếu đều được thiết
             kế để bạn &quot;xách vali vào ở&quot; mà không phải lo các chi phí phát sinh phức tạp.
           </p>
           <p>

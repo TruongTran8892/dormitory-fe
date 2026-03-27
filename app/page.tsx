@@ -6,14 +6,14 @@ import ExperienceSlideshow from "./components/ExperienceSlideshow";
 export const metadata: Metadata = {
   title: "Trang chủ",
   description:
-    "Lumiere Housing mang đến mô hình Sleepbox KTX cao cấp tại Thủ Đức với dịch vụ bao trọn gói, không gian sống thẩm mỹ và tiện nghi cho sinh viên.",
+    "Nấm's Dormitory mang đến ký túc xá và căn hộ dịch vụ tại Thủ Đức với dịch vụ bao trọn gói, không gian sống tiện nghi và riêng tư cho sinh viên.",
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "Lumiere Housing - Sleepbox KTX Cao Cấp Thủ Đức",
+    title: "Nấm's Dormitory - Ký túc xá & Căn hộ dịch vụ tại Thủ Đức",
     description:
-      "Trải nghiệm không gian sống 'Xịn - Mịn - Sang' với Sleepbox private, tiện ích đầy đủ và vị trí gần các trường đại học lớn tại Thủ Đức.",
+      "Không gian sống 'Xịn - Mịn - Sang' với tiện ích đầy đủ, vị trí thuận tiện và dịch vụ minh bạch tại Thủ Đức.",
     url: "/",
   },
 };
@@ -22,7 +22,7 @@ export default function Home() {
   return (
     <div className="text-neutral-800">
       <header className="fixed w-full z-[100] bg-[#FCFAf7]/90 backdrop-blur-md border-b border-stone-200 shadow-sm">
-        <nav className="container mx-auto px-6 py-5 flex justify-between items-center">
+        <nav className="container mx-auto px-6 py-5 flex justify-between items-center gap-3 flex-nowrap">
           <a href="#" className="cursor-pointer">
             <Image
               src="/logo-nams-dom.svg"
@@ -30,7 +30,7 @@ export default function Home() {
               width={220}
               height={60}
               priority
-              className="h-12 w-auto"
+              className="h-9 md:h-12 w-auto"
             />
           </a>
           <div className="hidden lg:flex space-x-10 font-medium text-sm uppercase tracking-[0.15em] text-neutral-600">
@@ -49,7 +49,7 @@ export default function Home() {
           </div>
           <a
             href="tel:0938453548"
-            className="border border-premium-gold text-premium-gold px-6 py-2 rounded-full font-bold text-sm hover:bg-premium-gold hover:text-white transition tracking-widest uppercase"
+            className="inline-flex items-center border border-premium-gold text-premium-gold px-3.5 md:px-6 py-2 rounded-full font-bold text-[10px] md:text-sm hover:bg-premium-gold hover:text-white transition tracking-[0.04em] md:tracking-widest uppercase whitespace-nowrap leading-none"
           >
             TƯ VẤN NGAY
           </a>
@@ -92,9 +92,10 @@ export default function Home() {
             <div className="flex flex-wrap gap-6">
               <a
                 href="#location"
-                className="bg-premium-gold hover:bg-[#b08d4a] text-white px-10 py-4 rounded-full text-sm font-bold transition-all uppercase tracking-widest shadow-lg"
+                className="inline-flex items-center bg-premium-gold hover:bg-[#b08d4a] text-white px-5 md:px-10 py-3.5 md:py-4 rounded-full text-[11px] md:text-sm font-bold transition-all uppercase tracking-[0.03em] md:tracking-widest shadow-lg whitespace-nowrap leading-none"
               >
-                Gần các trường Đại học lớn Thủ Đức
+                <span className="md:hidden">Gần các ĐH trọng điểm</span>
+                <span className="hidden md:inline">Kết nối nhanh đến các ĐH trọng điểm</span>
               </a>
             </div>
           </div>
@@ -125,7 +126,7 @@ export default function Home() {
               <h3 className="text-xl font-bold mb-3">Không gian riêng tư</h3>
               <p className="text-stone-500 text-sm font-light leading-relaxed">
                 Pod ngủ riêng tư, full máy lạnh, bàn học âm, đèn đọc sách và hộc tủ riêng.
-                Không gian yên tĩnh, thẩm mỹ.
+                Không gian yên tĩnh, gọn gàng và hiện đại.
               </p>
             </div>
 
@@ -174,15 +175,15 @@ export default function Home() {
               </p>
               <h2 className="text-4xl md:text-5xl font-extrabold mb-8 leading-tight italic tracking-tighter text-neutral-900">
                 Vị trí &quot;Vàng&quot; Thủ Đức. <br />
-                <span className="text-premium-gold not-italic">
-                  Gần{" "}
+                <span className="text-premium-gold not-italic text-[0.85em]">
+                  Kết nối nhanh{" "}
                   <span className="italic underline decoration-1 decoration-premium-gold">
-                    Mọi Trường ĐH.
+                    các Trường ĐH trọng điểm.
                   </span>
                 </span>
               </h2>
               <p className="text-stone-600 mb-10 leading-[1.8] font-light max-w-md">
-                Tiết kiệm thời gian di chuyển, tối đa thời gian nghỉ ngơi. Lumiere KTX tự hào sở
+                Tiết kiệm thời gian di chuyển, tối đa thời gian nghỉ ngơi. Nấm&apos;s Dormitory tự hào sở
                 hữu vị trí siêu thuận tiện, nằm ngay trái tim của cụm các trường Đại học lớn tại
                 Thủ Đức/Quận 9.
               </p>
@@ -270,7 +271,7 @@ export default function Home() {
                 />
               </a>
               <p className="text-stone-400 text-xs leading-[2] font-light max-w-xs uppercase tracking-wider">
-                Lưu trú thẩm mỹ, an tâm học tập. Dành riêng cho sinh viên Thủ Đức.
+                Lưu trú tiện nghi, an tâm học tập. Dành riêng cho sinh viên Thủ Đức.
               </p>
             </div>
             <div>
@@ -302,7 +303,7 @@ export default function Home() {
             </div>
           </div>
           <div className="text-[10px] text-stone-400 uppercase tracking-widest flex flex-col md:flex-row justify-between items-center border-t border-stone-100 pt-10">
-            <p>© 2026 Lumiere Housing. Cozy Living for Students.</p>
+            <p>© 2026 Nấm&apos;s Dormitory. Cozy Living for Students.</p>
             </div>
         </div>
       </footer>

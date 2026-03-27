@@ -13,14 +13,15 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Lumiere Housing - Sleepbox KTX Cao Cấp Thủ Đức",
-    template: "%s | Lumiere Housing",
+    default: "Nấm's Dormitory - Ký túc xá & Căn hộ dịch vụ tại Thủ Đức",
+    template: "%s | Nấm's Dormitory",
   },
   description:
-    "Lumiere Housing cung cấp Sleepbox KTX cao cấp tại Thủ Đức với không gian riêng tư, tiện nghi trọn gói và vị trí gần các trường đại học lớn.",
+    "Nấm's Dormitory cung cấp ký túc xá và căn hộ dịch vụ tại Thủ Đức với không gian riêng tư, tiện nghi trọn gói và vị trí di chuyển thuận tiện.",
   keywords: [
-    "Lumiere Housing",
-    "Sleepbox",
+    "Nấm's Dormitory",
+    "ký túc xá",
+    "căn hộ dịch vụ",
     "KTX cao cấp",
     "ký túc xá Thủ Đức",
     "phòng trọ sinh viên",
@@ -33,16 +34,16 @@ export const metadata: Metadata = {
     type: "website",
     locale: "vi_VN",
     url: "/",
-    siteName: "Lumiere Housing",
-    title: "Lumiere Housing - Sleepbox KTX Cao Cấp Thủ Đức",
+    siteName: "Nấm's Dormitory",
+    title: "Nấm's Dormitory - Ký túc xá & Căn hộ dịch vụ tại Thủ Đức",
     description:
-      "Không gian sống riêng tư, tiện nghi trọn gói cho sinh viên tại Thủ Đức. Gần các trường đại học lớn, dọn vào ở ngay.",
+      "Không gian sống riêng tư, tiện nghi trọn gói cho sinh viên tại Thủ Đức. Đăng ký xem phòng nhanh và nhận tư vấn trực tiếp.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Lumiere Housing - Sleepbox KTX Cao Cấp Thủ Đức",
+    title: "Nấm's Dormitory - Ký túc xá & Căn hộ dịch vụ tại Thủ Đức",
     description:
-      "Sleepbox KTX cao cấp cho sinh viên Thủ Đức: riêng tư, tiện nghi, vị trí thuận tiện và chi phí rõ ràng.",
+      "Ký túc xá & căn hộ dịch vụ cho sinh viên tại Thủ Đức: riêng tư, tiện nghi, vị trí thuận tiện và chi phí rõ ràng.",
   },
   robots: {
     index: true,
