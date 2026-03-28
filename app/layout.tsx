@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import { Nunito } from "next/font/google";
 import "./globals.css";
+import RevealOnScroll from "./components/RevealOnScroll";
+import SiteFooter from "./components/SiteFooter";
 import SiteHeader from "./components/SiteHeader";
 
 const nunito = Nunito({
@@ -62,7 +65,7 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
   return (
     <html
@@ -71,7 +74,10 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         <SiteHeader />
-        {children}
+        <div className="flex-1 flex flex-col">{children}</div>
+        <RevealOnScroll>
+          <SiteFooter />
+        </RevealOnScroll>
       </body>
     </html>
   );

@@ -3,11 +3,19 @@
 :root {
   --background: #fcfaf7;
   --foreground: #171717;
+  /* Ghim bản đồ — cùng vàng đất như button (bg-premium-gold / hover) */
+  --map-pin-fill: #c5a059;
+  --map-pin-fill-hover: #b08d4a;
+  --map-pin-ground: #8c6f3d;
+  --map-pin-ground-hover: #7a6135;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  /* Enables text-premium-gold, decoration-premium-gold, hover:*, … in class names */
+  --color-premium-gold: #c5a059;
+  --color-premium-dark: #1a1a1a;
   --font-sans: var(--font-nunito);
 }
 
@@ -57,4 +65,135 @@ body {
 
 .map-container {
   filter: grayscale(1) invert(0.92) contrast(1.1);
+}
+
+/* Chill hover — smooth easing, subtle motion on interactive elements */
+.chill-transition {
+  transition-property: color, background-color, border-color, box-shadow, transform, opacity,
+    text-decoration-color, filter;
+  transition-duration: 380ms;
+  transition-timing-function: cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.chill-lift:hover:not(:disabled) {
+  transform: translateY(-3px);
+}
+
+.chill-lift:active:not(:disabled) {
+  transform: translateY(0) scale(0.985);
+}
+
+/* Round / icon controls: soft pop + tap feedback */
+.chill-tap:hover:not(:disabled) {
+  transform: scale(1.05);
+}
+
+.chill-tap:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+/* Vertically centered controls (keeps translateY(-50%) with scale) */
+.chill-arrow-y {
+  transition-property: transform, background-color, border-color, box-shadow, opacity, backdrop-filter;
+  transition-duration: 380ms;
+  transition-timing-function: cubic-bezier(0.33, 1, 0.68, 1);
+  transform: translateY(-50%);
+}
+
+.chill-arrow-y:hover:not(:disabled) {
+  transform: translateY(-50%) scale(1.06);
+}
+
+.chill-arrow-y:active:not(:disabled) {
+  transform: translateY(-50%) scale(0.95);
+}
+
+/* —— Site-wide motion (respect reduced motion) —— */
+@keyframes site-fade-up {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 0.85rem, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes site-header-enter {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -0.6rem, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes site-hero-shimmer {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-site-header {
+  animation: site-header-enter 0.65s cubic-bezier(0.33, 1, 0.68, 1) both;
+}
+
+.hero-fade-up {
+  opacity: 0;
+  animation: site-fade-up 0.8s cubic-bezier(0.33, 1, 0.68, 1) forwards;
+}
+
+.hero-fade-d1 {
+  animation-delay: 0.07s;
+}
+
+.hero-fade-d2 {
+  animation-delay: 0.16s;
+}
+
+.hero-fade-d3 {
+  animation-delay: 0.26s;
+}
+
+.hero-fade-d4 {
+  animation-delay: 0.36s;
+}
+
+.hero-overlay-anim {
+  animation: site-hero-shimmer 1s ease-out 0.1s both;
+}
+
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translate3d(0, 1.15rem, 0);
+  transition:
+    opacity 0.75s cubic-bezier(0.33, 1, 0.68, 1),
+    transform 0.75s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.reveal-on-scroll-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-site-header,
+  .hero-fade-up,
+  .hero-overlay-anim {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .reveal-on-scroll {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }

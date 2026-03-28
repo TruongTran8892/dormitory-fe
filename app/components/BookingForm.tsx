@@ -95,7 +95,7 @@ export default function BookingForm() {
       </div>
       <button
         disabled={isSubmitting}
-        className="w-full rounded-xl bg-[#c58d4a] text-white py-4 mt-4 text-[11px] font-bold tracking-[0.2em] uppercase hover:bg-[#b07c40] transition duration-300 shadow-md disabled:opacity-70 disabled:cursor-not-allowed"
+        className="chill-transition chill-lift w-full rounded-xl bg-[#c58d4a] text-white py-4 mt-4 text-[11px] font-bold tracking-[0.2em] uppercase hover:bg-[#b07c40] shadow-md hover:shadow-lg disabled:opacity-70 disabled:cursor-not-allowed"
       >
         {isSubmitting ? "Đang xử lý..." : "Đăng ký xem phòng"}
       </button>

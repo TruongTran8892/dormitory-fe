@@ -2,6 +2,13 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import BookingForm from "./components/BookingForm";
 import ExperienceSlideshow from "./components/ExperienceSlideshow";
+import RevealOnScroll from "./components/RevealOnScroll";
+import { LocationTeardropIcon } from "./components/LocationTeardropIcon";
+import {
+  MAP_DIRECTIONS_URL,
+  MAP_EMBED_URL,
+  SITE_ADDRESS_QUERY,
+} from "./site-config";
 
 const HERO_IMAGE_DRIVE_ID = "1u0fQAtsaMxomFxSw4gILDNDij6P_7l8u";
 
@@ -33,14 +40,14 @@ export default function Home() {
           unoptimized
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-0 hero-overlay" />
+        <div className="absolute inset-0 hero-overlay hero-overlay-anim" />
 
         <div className="container mx-auto px-6 relative z-10 text-white">
           <div className="max-w-4xl">
-            <p className="text-premium-gold/95 font-semibold tracking-[0.24em] uppercase mb-5 text-[11px] md:text-sm">
+            <p className="hero-fade-up hero-fade-d1 text-premium-gold/95 font-semibold tracking-[0.24em] uppercase mb-5 text-[11px] md:text-sm">
               Không gian lưu trú cao cấp & tiện nghi bậc nhất
             </p>
-            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold mb-8 md:mb-10 leading-[1.1] sm:leading-[1.08] tracking-[-0.02em] max-w-4xl text-pretty">
+            <h1 className="hero-fade-up hero-fade-d2 text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold mb-8 md:mb-10 leading-[1.1] sm:leading-[1.08] tracking-[-0.02em] max-w-4xl text-pretty">
               <span className="block not-italic font-black text-white whitespace-normal lg:whitespace-nowrap drop-shadow-[0_4px_16px_rgba(0,0,0,0.38)]">
                 Ký túc xá & Căn hộ dịch vụ
               </span>
@@ -53,14 +60,14 @@ export default function Home() {
                 </span>
               </span>
             </h1>
-            <p className="text-base md:text-xl mb-12 text-stone-200 leading-relaxed font-normal max-w-2xl border-l-2 border-premium-gold/80 pl-6">
+            <p className="hero-fade-up hero-fade-d3 text-base md:text-xl mb-12 text-stone-200 leading-relaxed font-normal max-w-2xl border-l-2 border-premium-gold/80 pl-6">
               Bao trọn gói dịch vụ cao cấp, không lo phát sinh chi phí. Một không gian sống
               &quot;Xịn - Mịn - Sang&quot; dành riêng cho các bạn sinh viên văn minh.
             </p>
-            <div className="flex flex-wrap gap-6">
+            <div className="hero-fade-up hero-fade-d4 flex flex-wrap gap-6">
               <a
                 href="#location"
-                className="inline-flex items-center bg-premium-gold hover:bg-[#b08d4a] text-white px-5 md:px-10 py-3.5 md:py-4 rounded-full text-[11px] md:text-sm font-bold transition-all uppercase tracking-[0.03em] md:tracking-widest shadow-lg whitespace-nowrap leading-none"
+                className="chill-transition chill-lift inline-flex items-center bg-premium-gold hover:bg-[#b08d4a] text-white px-5 md:px-10 py-3.5 md:py-4 rounded-full text-[11px] md:text-sm font-bold uppercase tracking-[0.03em] md:tracking-widest shadow-lg hover:shadow-xl whitespace-nowrap leading-none"
               >
                 <span className="md:hidden">Gần các ĐH trọng điểm</span>
                 <span className="hidden md:inline">Kết nối nhanh đến các ĐH trọng điểm</span>
@@ -70,8 +77,11 @@ export default function Home() {
         </div>
       </section>
 
-      <ExperienceSlideshow />
+      <RevealOnScroll>
+        <ExperienceSlideshow />
+      </RevealOnScroll>
 
+      <RevealOnScroll>
       <section id="pod-details" className="py-24 bg-[#F5F2ED]">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
@@ -133,7 +143,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+      </RevealOnScroll>
 
+      <RevealOnScroll>
       <section id="location" className="py-24">
         <div className="container mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -152,9 +164,18 @@ export default function Home() {
                 hữu vị trí siêu thuận tiện, nằm ngay trái tim của cụm các trường Đại học lớn tại
                 Thủ Đức/Quận 9.
               </p>
-              <p className="text-sm text-neutral-700 font-semibold mb-8">
-                Địa chỉ: 1/7B, Đường số 18, Phường Linh Chiểu, Thủ Đức
+              <p className="text-sm text-neutral-700 font-semibold mb-3">
+                Địa chỉ: {SITE_ADDRESS_QUERY}
               </p>
+              <a
+                href={MAP_DIRECTIONS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="chill-transition chill-lift group inline-flex items-center gap-2 text-sm font-semibold text-neutral-800 hover:text-premium-gold mb-8 rounded-lg"
+              >
+                <LocationTeardropIcon className="h-6 w-6" />
+                <span className="leading-normal">Chỉ đường trên Google Maps</span>
+              </a>
 
               <ul className="space-y-5 text-sm font-medium text-neutral-700 italic border-l border-premium-gold pl-6">
                 <li>📍 Gần ĐH Ngân hàng</li>
@@ -167,7 +188,7 @@ export default function Home() {
             <div className="relative">
               <div className="rounded-lg shadow-2xl h-96 overflow-hidden border-2 border-premium-dark/10 map-container">
                 <iframe
-                  src="https://www.google.com/maps?q=1%2F7B%2C%20%C4%90%C6%B0%E1%BB%9Dng%20s%E1%BB%91%2018%2C%20Ph%C6%B0%E1%BB%9Dng%20Linh%20Chi%E1%BB%83u%2C%20Th%E1%BB%A7%20%C4%90%E1%BB%A9c&output=embed"
+                  src={MAP_EMBED_URL}
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
@@ -180,7 +201,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+      </RevealOnScroll>
 
+      <RevealOnScroll>
       <section className="bg-premium-dark py-24 text-white relative overflow-hidden rounded-[2rem] mx-4 md:mx-8 mb-20" id="booking">
         <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
           <div>
@@ -199,7 +222,10 @@ export default function Home() {
                 <Image src="/zalo-logo.svg" alt="" aria-hidden="true" width={20} height={20} />
                 <span>
                   Zalo:{" "}
-                  <a className="text-premium-gold hover:underline" href="https://zalo.me/0938453548">
+                  <a
+                    className="chill-transition text-premium-gold hover:underline hover:opacity-90"
+                    href="https://zalo.me/0938453548"
+                  >
                     0938453548
                   </a>
                 </span>
@@ -208,7 +234,10 @@ export default function Home() {
                 <Image src="/phone-logo.svg" alt="" aria-hidden="true" width={20} height={20} />
                 <span>
                   Điện thoại:{" "}
-                  <a className="text-premium-gold hover:underline" href="tel:0938453548">
+                  <a
+                    className="chill-transition text-premium-gold hover:underline hover:opacity-90"
+                    href="tel:0938453548"
+                  >
                     0938453548
                   </a>
                 </span>
@@ -221,57 +250,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      <footer className="bg-white py-20 px-6 border-t border-stone-100">
-        <div className="container mx-auto">
-          <div className="grid md:grid-cols-3 gap-16 mb-20">
-            <div>
-              <a href="#" className="mb-6 cursor-pointer block">
-                <Image
-                  src="/logo-nams-dom.svg"
-                  alt="Nấm's Dormitory"
-                  width={180}
-                  height={50}
-                  className="h-10 w-auto"
-                />
-              </a>
-              <p className="text-stone-400 text-xs leading-[2] font-light max-w-xs uppercase tracking-wider">
-                Lưu trú tiện nghi, an tâm học tập. Dành riêng cho sinh viên Thủ Đức.
-              </p>
-            </div>
-            <div>
-              <h4 className="font-bold text-[10px] uppercase tracking-[0.2em] mb-8 text-neutral-400">
-                Vị trí
-              </h4>
-              <p className="text-stone-600 text-sm font-light not-italic">
-                1/7B, Đường số 18, phường Thủ Đức, Hồ Chí Minh.
-              </p>
-            </div>
-            <div>
-              <h4 className="font-bold text-[10px] uppercase tracking-[0.2em] mb-8 text-neutral-400">
-                Kết nối văn minh
-              </h4>
-              <div className="flex gap-8 text-sm font-bold text-neutral-900">
-                <a
-                  href="#"
-                  className="hover:text-premium-gold underline decoration-1 underline-offset-8 transition"
-                >
-                  INSTAGRAM
-                </a>
-                <a
-                  href="#"
-                  className="hover:text-premium-gold underline decoration-1 underline-offset-8 transition"
-                >
-                  TIKTOK
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="text-[10px] text-stone-400 uppercase tracking-widest flex flex-col md:flex-row justify-between items-center border-t border-stone-100 pt-10">
-            <p>© 2026 Nấm&apos;s Dormitory. Cozy Living for Students.</p>
-            </div>
-        </div>
-      </footer>
+      </RevealOnScroll>
     </div>
   );
 }

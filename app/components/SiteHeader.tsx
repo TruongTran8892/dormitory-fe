@@ -6,6 +6,12 @@ import { useEffect, useRef, useState } from "react";
 
 const PHONE = "0938453548";
 
+const desktopNavLinkClass =
+  "chill-transition relative inline-block py-1 text-neutral-600 hover:text-premium-gold underline decoration-2 underline-offset-[10px] decoration-transparent hover:decoration-premium-gold";
+
+const mobileNavLinkClass =
+  "chill-transition py-3 px-3 -mx-1 border-b border-stone-200 rounded-lg text-neutral-800 hover:text-premium-gold hover:bg-stone-50/90 active:bg-stone-100/80";
+
 export default function SiteHeader() {
   const [isOpen, setIsOpen] = useState(false);
   const toggleRef = useRef<HTMLButtonElement | null>(null);
@@ -37,9 +43,9 @@ export default function SiteHeader() {
   }, [isOpen]);
 
   return (
-    <header className="fixed w-full z-[100] bg-[#FCFAf7]/90 backdrop-blur-md border-b border-stone-200 shadow-sm">
+    <header className="animate-site-header fixed w-full z-[100] bg-[#FCFAf7]/90 backdrop-blur-md border-b border-stone-200 shadow-sm">
       <nav className="container mx-auto pl-6 pr-3 md:px-6 py-5 flex justify-between items-center gap-3 flex-nowrap">
-        <Link href="/" className="cursor-pointer">
+        <Link href="/" className="chill-transition cursor-pointer inline-block rounded-md hover:opacity-90 hover:scale-[1.02]">
           <Image
             src="/logo-nams-dom.svg"
             alt="Nấm's Dormitory"
@@ -50,17 +56,20 @@ export default function SiteHeader() {
           />
         </Link>
 
-        <div className="hidden lg:flex space-x-10 font-medium text-sm uppercase tracking-[0.15em] text-neutral-600">
-          <Link href="/about" className="hover:text-premium-gold transition">
+        <div className="hidden lg:flex space-x-10 font-medium text-sm uppercase tracking-[0.15em]">
+          <Link href="/about" className={desktopNavLinkClass}>
             Phong cách
           </Link>
-          <Link href="/#pod-details" className="hover:text-premium-gold transition">
+          <Link href="/blogs" className={desktopNavLinkClass}>
+            Blog
+          </Link>
+          <Link href="/#pod-details" className={desktopNavLinkClass}>
             Pod & Dịch vụ
           </Link>
-          <Link href="/#location" className="hover:text-premium-gold transition">
+          <Link href="/#location" className={desktopNavLinkClass}>
             Vị trí Vàng
           </Link>
-          <Link href="/#booking" className="hover:text-premium-gold transition">
+          <Link href="/#booking" className={desktopNavLinkClass}>
             Liên hệ
           </Link>
         </div>
@@ -68,7 +77,7 @@ export default function SiteHeader() {
         <div className="flex items-center gap-1.5 md:gap-2">
           <a
             href={`tel:${PHONE}`}
-            className="inline-flex items-center justify-center bg-premium-gold hover:bg-[#b08d4a] text-white h-8 px-3 lg:h-auto lg:px-6 py-0 lg:py-2 rounded-full font-extrabold text-[10px] md:text-sm transition tracking-[0.04em] lg:tracking-widest uppercase whitespace-nowrap leading-none shadow-lg shrink-0"
+            className="chill-transition chill-lift inline-flex items-center justify-center bg-premium-gold hover:bg-[#b08d4a] text-white h-8 px-3 lg:h-auto lg:px-6 py-0 lg:py-2 rounded-full font-extrabold text-[10px] md:text-sm tracking-[0.04em] lg:tracking-widest uppercase whitespace-nowrap leading-none shadow-lg hover:shadow-xl shrink-0"
           >
             TƯ VẤN NGAY
           </a>
@@ -78,7 +87,7 @@ export default function SiteHeader() {
             aria-label={isOpen ? "Đóng menu" : "Mở menu"}
             aria-expanded={isOpen}
             onClick={() => setIsOpen((v) => !v)}
-            className="lg:hidden inline-flex items-center justify-center h-8 w-8 p-0 m-0 rounded-full border border-stone-200 bg-white/70 hover:bg-white transition shrink-0 text-neutral-800"
+            className="chill-transition lg:hidden inline-flex items-center justify-center h-8 w-8 p-0 m-0 rounded-full border border-stone-200 bg-white/70 hover:bg-white hover:border-stone-300 shrink-0 text-neutral-800"
             ref={toggleRef}
           >
             <svg
@@ -112,7 +121,7 @@ export default function SiteHeader() {
               <button
                 type="button"
                 aria-label="Đóng menu"
-                className="inline-flex items-center justify-center h-8 w-8 p-0 m-0 rounded-full border border-stone-200 bg-white hover:bg-stone-50 transition text-neutral-800"
+                className="chill-transition inline-flex items-center justify-center h-8 w-8 p-0 m-0 rounded-full border border-stone-200 bg-white hover:bg-stone-50 hover:border-stone-300 text-neutral-800"
                 onClick={close}
               >
                 <svg
@@ -131,17 +140,20 @@ export default function SiteHeader() {
               </button>
             </div>
 
-            <div className="flex flex-col font-semibold text-neutral-800">
-              <Link href="/about" onClick={close} className="py-3 border-b border-stone-200">
+            <div className="flex flex-col font-semibold">
+              <Link href="/about" onClick={close} className={mobileNavLinkClass}>
                 Phong cách
               </Link>
-              <Link href="/#pod-details" onClick={close} className="py-3 border-b border-stone-200">
+              <Link href="/blogs" onClick={close} className={mobileNavLinkClass}>
+                Blog
+              </Link>
+              <Link href="/#pod-details" onClick={close} className={mobileNavLinkClass}>
                 Pod & Dịch vụ
               </Link>
-              <Link href="/#location" onClick={close} className="py-3 border-b border-stone-200">
+              <Link href="/#location" onClick={close} className={mobileNavLinkClass}>
                 Vị trí Vàng
               </Link>
-              <Link href="/#booking" onClick={close} className="py-3 border-b border-stone-200">
+              <Link href="/#booking" onClick={close} className={mobileNavLinkClass}>
                 Liên hệ
               </Link>
             </div>
@@ -149,7 +161,7 @@ export default function SiteHeader() {
             <div className="mt-5 pb-1">
               <a
                 href={`tel:${PHONE}`}
-                className="inline-flex items-center justify-center w-full bg-premium-gold hover:bg-[#b08d4a] text-white py-3 rounded-full font-extrabold text-sm tracking-widest uppercase shadow-lg transition"
+                className="chill-transition chill-lift inline-flex items-center justify-center w-full bg-premium-gold hover:bg-[#b08d4a] text-white py-3 rounded-full font-extrabold text-sm tracking-widest uppercase shadow-lg hover:shadow-xl"
                 onClick={close}
               >
                 Gọi tư vấn: {PHONE}

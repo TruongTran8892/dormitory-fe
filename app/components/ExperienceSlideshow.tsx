@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState, type TouchEvent } from "react";
 import Image from "next/image";
 
 type Slide = {
@@ -62,11 +62,13 @@ const slides: Slide[] = [
 ];
 
 const AUTO_PLAY_MS = 4500;
+const SWIPE_MIN_PX = 50;
 
 export default function ExperienceSlideshow() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+  const lightboxTouchStart = useRef<{ x: number; y: number } | null>(null);
 
   const currentSlide = useMemo(() => slides[currentIndex], [currentIndex]);
 
@@ -78,8 +80,50 @@ export default function ExperienceSlideshow() {
     return () => window.clearInterval(timer);
   }, [isPaused, isLightboxOpen]);
 
+  useEffect(() => {
+    if (!isLightboxOpen) return;
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [isLightboxOpen]);
+
+  useEffect(() => {
+    if (!isLightboxOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setIsLightboxOpen(false);
+      if (e.key === "ArrowLeft") {
+        setCurrentIndex((p) => (p - 1 + slides.length) % slides.length);
+      }
+      if (e.key === "ArrowRight") {
+        setCurrentIndex((p) => (p + 1) % slides.length);
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [isLightboxOpen]);
+
   const goPrev = () => setCurrentIndex((prev) => (prev - 1 + slides.length) % slides.length);
   const goNext = () => setCurrentIndex((prev) => (prev + 1) % slides.length);
+
+  const onLightboxTouchStart = (e: TouchEvent<HTMLDivElement>) => {
+    const t = e.targetTouches[0];
+    lightboxTouchStart.current = { x: t.clientX, y: t.clientY };
+  };
+
+  const onLightboxTouchEnd = (e: TouchEvent<HTMLDivElement>) => {
+    const start = lightboxTouchStart.current;
+    lightboxTouchStart.current = null;
+    if (!start) return;
+    const t = e.changedTouches[0];
+    const dx = t.clientX - start.x;
+    const dy = t.clientY - start.y;
+    if (Math.abs(dx) < SWIPE_MIN_PX) return;
+    if (Math.abs(dx) < Math.abs(dy)) return;
+    if (dx > 0) goPrev();
+    else goNext();
+  };
 
   // Google Drive thumbnail endpoint is served by Google CDN and can negotiate modern formats.
   const currentSrc = `https://drive.google.com/thumbnail?id=${currentSlide.driveId}&sz=w2000`;
@@ -110,7 +154,7 @@ export default function ExperienceSlideshow() {
               type="button"
               aria-label="Xem ảnh trước"
               onClick={goPrev}
-              className="absolute left-4 top-1/2 -translate-y-1/2 z-20 h-11 w-11 rounded-full bg-black/45 text-white hover:bg-black/65 transition"
+              className="chill-arrow-y absolute left-4 top-1/2 z-20 h-11 w-11 rounded-full bg-black/45 text-white hover:bg-black/65"
             >
               ←
             </button>
@@ -119,7 +163,7 @@ export default function ExperienceSlideshow() {
               type="button"
               aria-label="Xem ảnh tiếp theo"
               onClick={goNext}
-              className="absolute right-4 top-1/2 -translate-y-1/2 z-20 h-11 w-11 rounded-full bg-black/45 text-white hover:bg-black/65 transition"
+              className="chill-arrow-y absolute right-4 top-1/2 z-20 h-11 w-11 rounded-full bg-black/45 text-white hover:bg-black/65"
             >
               →
             </button>
@@ -127,7 +171,7 @@ export default function ExperienceSlideshow() {
             <button
               type="button"
               onClick={() => setIsLightboxOpen(true)}
-              className="group relative block w-full text-left"
+              className="chill-transition group relative block w-full text-left rounded-2xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-premium-gold/50"
               aria-label="Mở ảnh toàn màn hình"
             >
               <div className="relative h-[300px] sm:h-[420px] md:h-[560px]">
@@ -156,8 +200,10 @@ export default function ExperienceSlideshow() {
                 type="button"
                 aria-label={`Đi tới ảnh ${idx + 1}`}
                 onClick={() => setCurrentIndex(idx)}
-                className={`h-2.5 rounded-full transition-all ${
-                  idx === currentIndex ? "w-8 bg-premium-gold" : "w-2.5 bg-stone-300 hover:bg-stone-400"
+                  className={`chill-transition h-2.5 rounded-full ${
+                  idx === currentIndex
+                    ? "w-8 bg-premium-gold"
+                    : "chill-tap w-2.5 bg-stone-300 hover:bg-stone-400"
                 }`}
               />
             ))}
@@ -167,28 +213,81 @@ export default function ExperienceSlideshow() {
 
       {isLightboxOpen && (
         <div
-          className="fixed inset-0 z-[120] bg-black/90 p-4 md:p-8"
+          className="fixed inset-0 z-[120] flex items-center justify-center bg-black/90 px-1 pt-14 pb-4 sm:px-3 md:p-8 md:pt-20"
           role="dialog"
           aria-modal="true"
-          onClick={() => setIsLightboxOpen(false)}
+          aria-label="Xem ảnh lớn"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) setIsLightboxOpen(false);
+          }}
         >
           <button
             type="button"
-            className="absolute right-6 top-5 text-white text-3xl leading-none"
+            className="chill-transition chill-tap absolute right-4 top-4 z-30 inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/30 bg-white/10 text-white hover:bg-white/20"
             aria-label="Đóng xem ảnh"
-            onClick={() => setIsLightboxOpen(false)}
+            onClick={(e) => {
+              e.stopPropagation();
+              setIsLightboxOpen(false);
+            }}
           >
-            ×
+            <svg aria-hidden width={18} height={18} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.2} strokeLinecap="round" className="block shrink-0">
+              <path d="M18 6 6 18M6 6l12 12" />
+            </svg>
           </button>
-          <div className="relative h-full w-full">
-            <Image
-              src={currentSrc}
-              alt={currentSlide.alt}
-              fill
-              unoptimized
-              className="object-contain"
-              sizes="100vw"
-            />
+
+          <p className="absolute top-4 left-1/2 -translate-x-1/2 z-20 text-white/80 text-xs tracking-widest tabular-nums">
+            {currentIndex + 1} / {slides.length}
+          </p>
+
+          <div
+            className="relative mx-auto h-[min(85vh,calc(100vh-5rem))] min-h-0 w-full max-w-6xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div
+              className="relative h-full w-full touch-pan-y select-none"
+              onTouchStart={onLightboxTouchStart}
+              onTouchEnd={onLightboxTouchEnd}
+              onTouchCancel={() => {
+                lightboxTouchStart.current = null;
+              }}
+            >
+              <Image
+                src={currentSrc}
+                alt={currentSlide.alt}
+                fill
+                unoptimized
+                className="object-contain pointer-events-none"
+                sizes="100vw"
+              />
+            </div>
+
+            <button
+              type="button"
+              aria-label="Ảnh trước"
+              onClick={(e) => {
+                e.stopPropagation();
+                goPrev();
+              }}
+              className="chill-arrow-y absolute left-2 top-1/2 z-30 inline-flex h-10 w-10 items-center justify-center rounded-full bg-black/50 text-white shadow-lg backdrop-blur-sm hover:bg-black/65 sm:left-3 sm:h-11 sm:w-11 border border-white/15"
+            >
+              <span aria-hidden className="text-lg leading-none">
+                ←
+              </span>
+            </button>
+
+            <button
+              type="button"
+              aria-label="Ảnh tiếp theo"
+              onClick={(e) => {
+                e.stopPropagation();
+                goNext();
+              }}
+              className="chill-arrow-y absolute right-2 top-1/2 z-30 inline-flex h-10 w-10 items-center justify-center rounded-full bg-black/50 text-white shadow-lg backdrop-blur-sm hover:bg-black/65 sm:right-3 sm:h-11 sm:w-11 border border-white/15"
+            >
+              <span aria-hidden className="text-lg leading-none">
+                →
+              </span>
+            </button>
           </div>
         </div>
       )}
