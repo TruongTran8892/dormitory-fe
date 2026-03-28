@@ -2,13 +2,10 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import BookingForm from "./components/BookingForm";
 import ExperienceSlideshow from "./components/ExperienceSlideshow";
+import MapEmbedFacade from "./components/MapEmbedFacade";
 import RevealOnScroll from "./components/RevealOnScroll";
 import { LocationTeardropIcon } from "./components/LocationTeardropIcon";
-import {
-  MAP_DIRECTIONS_URL,
-  MAP_EMBED_URL,
-  SITE_ADDRESS_QUERY,
-} from "./site-config";
+import { MAP_DIRECTIONS_URL, SITE_ADDRESS_QUERY } from "./site-config";
 
 const HERO_IMAGE_DRIVE_ID = "1u0fQAtsaMxomFxSw4gILDNDij6P_7l8u";
 
@@ -94,9 +91,7 @@ export default function Home() {
 
       <RevealOnScroll>
         <ExperienceSlideshow />
-      </RevealOnScroll>
 
-      <RevealOnScroll>
       <section id="pod-details" className="py-24 bg-[#F5F2ED]">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
@@ -158,9 +153,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      </RevealOnScroll>
 
-      <RevealOnScroll>
       <section id="location" className="py-24">
         <div className="container mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -201,24 +194,12 @@ export default function Home() {
               </ul>
             </div>
             <div className="relative">
-              <div className="rounded-lg shadow-2xl h-96 overflow-hidden border-2 border-premium-dark/10 map-container">
-                <iframe
-                  src={MAP_EMBED_URL}
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                />
-              </div>
+              <MapEmbedFacade />
             </div>
           </div>
         </div>
       </section>
-      </RevealOnScroll>
 
-      <RevealOnScroll>
       <section className="bg-premium-dark py-24 text-white relative overflow-hidden rounded-[2rem] mx-4 md:mx-8 mb-20" id="booking">
         <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
           <div>

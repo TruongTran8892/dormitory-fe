@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import ArticleJsonLd from "../../components/ArticleJsonLd";
 import BreadcrumbJsonLd from "../../components/BreadcrumbJsonLd";
 import RevealOnScroll from "../../components/RevealOnScroll";
 import BlogRelatedPosts from "../components/BlogRelatedPosts";
@@ -19,16 +20,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = getBlogPostBySlug(slug);
   if (!post) return { title: "Không tìm thấy" };
 
+  const siteOrigin = getSiteUrl().replace(/\/$/, "");
+
   return {
     title: post.title,
     description: post.excerpt,
     keywords: post.keywords,
+    authors: [{ name: "Nấm's Dormitory", url: `${siteOrigin}/` }],
     alternates: {
       canonical: `/blogs/${post.slug}`,
     },
     openGraph: {
       type: "article",
       publishedTime: `${post.publishedAt}T12:00:00+07:00`,
+      modifiedTime: `${post.publishedAt}T12:00:00+07:00`,
+      authors: ["Nấm's Dormitory"],
       title: `${post.title} | Nấm's Dormitory`,
       description: post.excerpt,
       url: `/blogs/${post.slug}`,
@@ -60,6 +66,7 @@ export default async function BlogDetailPage({ params }: Props) {
 
   return (
     <article className="bg-[#FCFAf7] text-neutral-800 pb-20">
+      <ArticleJsonLd siteUrl={siteUrl} post={post} />
       <BreadcrumbJsonLd
         siteUrl={siteUrl}
         items={[

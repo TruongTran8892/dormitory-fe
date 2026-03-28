@@ -5,7 +5,6 @@ import "./globals.css";
 import LocalBusinessJsonLd from "./components/LocalBusinessJsonLd";
 import WebSiteJsonLd from "./components/WebSiteJsonLd";
 import { getSiteUrl } from "./lib/site-url";
-import RevealOnScroll from "./components/RevealOnScroll";
 import SiteFooter from "./components/SiteFooter";
 import SiteHeader from "./components/SiteHeader";
 
@@ -93,18 +92,13 @@ export default function RootLayout({
   children: ReactNode;
 }>) {
   return (
-    <html
-      lang="vi"
-      className={`${nunito.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">
+    <html lang="vi" className={`${nunito.variable} h-full antialiased`}>
+      <body className="min-h-full flex flex-col" suppressHydrationWarning>
         <WebSiteJsonLd siteUrl={siteUrl} />
         <LocalBusinessJsonLd siteUrl={siteUrl} />
         <SiteHeader />
         <div className="flex-1 flex flex-col">{children}</div>
-        <RevealOnScroll>
-          <SiteFooter />
-        </RevealOnScroll>
+        <SiteFooter />
       </body>
     </html>
   );
