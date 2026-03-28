@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-[#FCFAf7] text-neutral-800">
+    <main className="min-h-screen bg-[#FCFAf7] text-neutral-800 pt-24">
       <section className="container mx-auto px-6 py-24 md:py-32">
         <p className="text-premium-gold font-semibold tracking-[0.2em] uppercase text-xs mb-4">
           About Us

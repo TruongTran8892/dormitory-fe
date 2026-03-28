@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 
 type Slide = {
-  src: string;
+  driveId: string;
   alt: string;
   title: string;
   description: string;
@@ -12,49 +12,49 @@ type Slide = {
 
 const slides: Slide[] = [
   {
-    src: "/experience/exp-1.jpg",
+    driveId: "1u0fQAtsaMxomFxSw4gILDNDij6P_7l8u",
     alt: "Không gian phòng ở riêng tư, thiết kế hiện đại tại Nấm's Dormitory",
     title: "Không gian lưu trú riêng tư",
     description: "Thiết kế tối ưu cho học tập và nghỉ ngơi, giữ sự riêng tư cần thiết cho từng bạn.",
   },
   {
-    src: "/experience/exp-2.jpg",
+    driveId: "1rIC-dIWS8dxRhYK-dzIxo4ciLVNw3n16",
     alt: "Khu vực giường ngủ gọn gàng, sạch sẽ và tiện nghi",
     title: "Giường ngủ êm ái, bố trí khoa học",
     description: "Khu ngủ được bố trí hợp lý, ánh sáng dịu mắt và đảm bảo sự thoải mái mỗi ngày.",
   },
   {
-    src: "/experience/exp-3.jpg",
+    driveId: "1I9dcJ9OHhBTX32Iu7-FBxoHlcTqzoAwa",
     alt: "Khu vực sinh hoạt chung tại Nấm's Dormitory",
     title: "Sinh hoạt chung văn minh",
     description: "Không gian chung rộng rãi, tạo cảm giác gần gũi nhưng vẫn giữ được sự ngăn nắp.",
   },
   {
-    src: "/experience/exp-4.jpg",
+    driveId: "1RgUhw9ukrknUVuTp0hALRnAHiTOZeAoY",
     alt: "Nội thất hiện đại, gam màu ấm và sạch",
     title: "Nội thất hiện đại, tông màu dễ chịu",
     description: "Phong cách tối giản cao cấp giúp không gian luôn thoáng và dễ chịu khi ở lâu dài.",
   },
   {
-    src: "/experience/exp-5.jpg",
+    driveId: "1jTqAsVdV_vMVkRpF6bdLp4u28ikxDHD2",
     alt: "Khu vực tiện ích với đầy đủ trang thiết bị",
     title: "Tiện ích đầy đủ trong tầm tay",
     description: "Máy lạnh, khu giặt, khu để đồ và các tiện ích thiết yếu được bố trí thuận tiện.",
   },
   {
-    src: "/experience/exp-6.jpg",
+    driveId: "1CkSsCVQraHQOPYo2IrqR45jUTOb4wm3z",
     alt: "Góc học tập yên tĩnh tại Nấm's Dormitory",
     title: "Góc học tập tập trung",
     description: "Không gian phù hợp cho việc học, làm việc online và sinh hoạt cá nhân hằng ngày.",
   },
   {
-    src: "/experience/exp-7.jpg",
+    driveId: "12Q7nMFYhk1493QZnUIzlv5kecZDkhhPO",
     alt: "Không gian sống sạch sẽ, gọn gàng, an toàn",
     title: "Sạch sẽ và an toàn",
     description: "Vận hành chú trọng vệ sinh định kỳ và tiêu chuẩn an toàn cho cư dân sinh viên.",
   },
   {
-    src: "/experience/exp-8.jpg",
+    driveId: "1d6hDi2vYZjhTKP9IsTnQKEfUm0Mw-ZiA",
     alt: "Không gian thực tế tại Nấm's Dormitory với chất lượng hoàn thiện tốt",
     title: "Hình ảnh thực tế, trải nghiệm thật",
     description: "Những góc chụp thực tế giúp bạn đánh giá rõ chất lượng không gian trước khi đặt chỗ.",
@@ -81,7 +81,8 @@ export default function ExperienceSlideshow() {
   const goPrev = () => setCurrentIndex((prev) => (prev - 1 + slides.length) % slides.length);
   const goNext = () => setCurrentIndex((prev) => (prev + 1) % slides.length);
 
-  const currentSrc = currentSlide.src;
+  // Google Drive thumbnail endpoint is served by Google CDN and can negotiate modern formats.
+  const currentSrc = `https://drive.google.com/thumbnail?id=${currentSlide.driveId}&sz=w2000`;
 
   return (
     <>
@@ -91,7 +92,7 @@ export default function ExperienceSlideshow() {
             <p className="text-premium-gold font-bold tracking-[0.2em] uppercase text-xs mb-3">
               Trải nghiệm trực quan
             </p>
-            <h2 className="text-3xl md:text-5xl font-extrabold text-neutral-900 tracking-tight">
+            <h2 className="text-4xl md:text-5xl font-extrabold text-neutral-900 tracking-tight leading-tight">
               Hình ảnh thực tế không gian lưu trú
             </h2>
             <p className="text-stone-500 mt-4 max-w-2xl mx-auto">
@@ -134,6 +135,7 @@ export default function ExperienceSlideshow() {
                   src={currentSrc}
                   alt={currentSlide.alt}
                   fill
+                  unoptimized
                   className="object-cover transition duration-500 group-hover:scale-[1.02]"
                   sizes="100vw"
                 />
@@ -150,7 +152,7 @@ export default function ExperienceSlideshow() {
           <div className="mt-6 flex justify-center gap-2">
             {slides.map((slide, idx) => (
               <button
-                key={slide.src}
+                key={slide.driveId}
                 type="button"
                 aria-label={`Đi tới ảnh ${idx + 1}`}
                 onClick={() => setCurrentIndex(idx)}
@@ -183,6 +185,7 @@ export default function ExperienceSlideshow() {
               src={currentSrc}
               alt={currentSlide.alt}
               fill
+              unoptimized
               className="object-contain"
               sizes="100vw"
             />

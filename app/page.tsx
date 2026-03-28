@@ -3,6 +3,8 @@ import Image from "next/image";
 import BookingForm from "./components/BookingForm";
 import ExperienceSlideshow from "./components/ExperienceSlideshow";
 
+const HERO_IMAGE_DRIVE_ID = "1u0fQAtsaMxomFxSw4gILDNDij6P_7l8u";
+
 export const metadata: Metadata = {
   title: "Trang chủ",
   description:
@@ -21,48 +23,14 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <div className="text-neutral-800">
-      <header className="fixed w-full z-[100] bg-[#FCFAf7]/90 backdrop-blur-md border-b border-stone-200 shadow-sm">
-        <nav className="container mx-auto px-6 py-5 flex justify-between items-center gap-3 flex-nowrap">
-          <a href="#" className="cursor-pointer">
-            <Image
-              src="/logo-nams-dom.svg"
-              alt="Nấm's Dormitory"
-              width={220}
-              height={60}
-              priority
-              className="h-9 md:h-12 w-auto"
-            />
-          </a>
-          <div className="hidden lg:flex space-x-10 font-medium text-sm uppercase tracking-[0.15em] text-neutral-600">
-            <a href="/about" className="hover:text-premium-gold transition">
-              Phong cách
-            </a>
-            <a href="#pod-details" className="hover:text-premium-gold transition">
-              Pod & Dịch vụ
-            </a>
-            <a href="#location" className="hover:text-premium-gold transition">
-              Vị trí Vàng
-            </a>
-            <a href="#booking" className="hover:text-premium-gold transition">
-              Liên hệ
-            </a>
-          </div>
-          <a
-            href="tel:0938453548"
-            className="inline-flex items-center border border-premium-gold text-premium-gold px-3.5 md:px-6 py-2 rounded-full font-bold text-[10px] md:text-sm hover:bg-premium-gold hover:text-white transition tracking-[0.04em] md:tracking-widest uppercase whitespace-nowrap leading-none"
-          >
-            TƯ VẤN NGAY
-          </a>
-        </nav>
-      </header>
-
-      <section className="relative min-h-[90vh] flex items-center overflow-hidden">
+      <section className="relative min-h-[90vh] flex items-center overflow-hidden pt-20 md:pt-24">
         <Image
-          src="/experience/exp-1.jpg"
+          src={`https://drive.google.com/thumbnail?id=${HERO_IMAGE_DRIVE_ID}&sz=w2200`}
           alt="Không gian nội thất ký túc xá tại Nấm's Dormitory"
           fill
           priority
           sizes="100vw"
+          unoptimized
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 hero-overlay" />
@@ -72,8 +40,8 @@ export default function Home() {
             <p className="text-premium-gold/95 font-semibold tracking-[0.24em] uppercase mb-5 text-[11px] md:text-sm">
               Không gian lưu trú cao cấp & tiện nghi bậc nhất
             </p>
-            <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold mb-8 md:mb-10 leading-[1.06] tracking-[-0.02em] max-w-4xl">
-              <span className="block not-italic font-black text-white whitespace-nowrap drop-shadow-[0_4px_16px_rgba(0,0,0,0.38)]">
+            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold mb-8 md:mb-10 leading-[1.1] sm:leading-[1.08] tracking-[-0.02em] max-w-4xl text-pretty">
+              <span className="block not-italic font-black text-white whitespace-normal lg:whitespace-nowrap drop-shadow-[0_4px_16px_rgba(0,0,0,0.38)]">
                 Ký túc xá & Căn hộ dịch vụ
               </span>
               <span className="block text-white font-black tracking-[0.005em] mt-3 text-[1.08em] md:text-[1.16em] leading-none">
@@ -110,7 +78,7 @@ export default function Home() {
             <p className="text-premium-gold font-bold tracking-[0.2em] uppercase text-xs mb-3">
               Living, Better.
             </p>
-            <h2 className="text-4xl md:text-5xl font-extrabold text-neutral-900 uppercase tracking-tighter">
+            <h2 className="text-4xl md:text-5xl font-extrabold text-neutral-900 tracking-tight leading-tight">
               KTX Bao Trọn Gói Cao Cấp
             </h2>
             <p className="text-stone-500 mt-4 max-w-xl mx-auto italic font-light">
@@ -173,13 +141,10 @@ export default function Home() {
               <p className="text-premium-gold font-bold tracking-[0.2em] uppercase text-xs mb-4">
                 Location is Key
               </p>
-              <h2 className="text-4xl md:text-5xl font-extrabold mb-8 leading-tight italic tracking-tighter text-neutral-900">
+              <h2 className="text-4xl md:text-5xl font-extrabold mb-8 leading-tight tracking-tight text-neutral-900">
                 Vị trí &quot;Vàng&quot; Thủ Đức. <br />
-                <span className="text-premium-gold not-italic text-[0.85em]">
-                  Kết nối nhanh{" "}
-                  <span className="italic underline decoration-1 decoration-premium-gold">
-                    các Trường ĐH trọng điểm.
-                  </span>
+                <span className="text-premium-gold text-[0.85em] font-semibold">
+                  Kết nối nhanh các Trường ĐH trọng điểm.
                 </span>
               </h2>
               <p className="text-stone-600 mb-10 leading-[1.8] font-light max-w-md">
@@ -219,7 +184,7 @@ export default function Home() {
       <section className="bg-premium-dark py-24 text-white relative overflow-hidden rounded-[2rem] mx-4 md:mx-8 mb-20" id="booking">
         <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
           <div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-8 leading-tight italic">
+            <h2 className="text-4xl md:text-5xl font-extrabold mb-8 leading-tight tracking-tight text-white">
               Chốt chỗ ngay, <br />
               <span className="text-premium-gold not-italic">
                 Nhận ưu đãi hấp dẫn.
@@ -276,10 +241,10 @@ export default function Home() {
             </div>
             <div>
               <h4 className="font-bold text-[10px] uppercase tracking-[0.2em] mb-8 text-neutral-400">
-                Hệ thống cơ sở
+                Vị trí
               </h4>
-              <p className="text-stone-600 text-sm font-light italic">
-                Thủ Đức / Quận 9 / Bình Thạnh
+              <p className="text-stone-600 text-sm font-light not-italic">
+                1/7B, Đường số 18, phường Thủ Đức, Hồ Chí Minh.
               </p>
             </div>
             <div>

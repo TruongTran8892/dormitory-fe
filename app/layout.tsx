@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Nunito } from "next/font/google";
 import "./globals.css";
+import SiteHeader from "./components/SiteHeader";
 
-const plusJakartaSans = Plus_Jakarta_Sans({
+const nunito = Nunito({
   subsets: ["latin", "vietnamese"],
   display: "swap",
-  variable: "--font-plus-jakarta-sans",
+  variable: "--font-nunito",
 });
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
@@ -66,9 +67,12 @@ export default function RootLayout({
   return (
     <html
       lang="vi"
-      className={`${plusJakartaSans.variable} h-full antialiased`}
+      className={`${nunito.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <SiteHeader />
+        {children}
+      </body>
     </html>
   );
 }
