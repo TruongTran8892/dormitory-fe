@@ -1,7 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
+import BreadcrumbJsonLd from "../components/BreadcrumbJsonLd";
 import RevealOnScroll from "../components/RevealOnScroll";
+import { getSiteUrl } from "../lib/site-url";
 
 export const metadata: Metadata = {
   title: "Về chúng tôi",
@@ -18,15 +20,33 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/about-townhouse.jpg",
+        width: 1024,
+        height: 724,
         alt: "Mặt tiền căn nhà Nấm's Dormitory — kiến trúc hiện đại nhiều tầng",
       },
     ],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Về chúng tôi | Nấm's Dormitory",
+    description:
+      "Sứ mệnh và định hướng của Nấm's Dormitory — không gian sống chất lượng cho sinh viên tại Thủ Đức.",
+    images: ["/about-townhouse.jpg"],
+  },
 };
 
 export default function AboutPage() {
+  const siteUrl = getSiteUrl();
+
   return (
     <main className="min-h-screen bg-[#FCFAf7] text-neutral-800 pt-24">
+      <BreadcrumbJsonLd
+        siteUrl={siteUrl}
+        items={[
+          { name: "Trang chủ", path: "/" },
+          { name: "Về chúng tôi", path: "/about" },
+        ]}
+      />
       <section className="container mx-auto px-6 py-16 md:py-28 lg:py-32">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-14 xl:gap-20 items-center">
           <RevealOnScroll className="min-w-0">

@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import BreadcrumbJsonLd from "../components/BreadcrumbJsonLd";
 import RevealOnScroll from "../components/RevealOnScroll";
+import { getSiteUrl } from "../lib/site-url";
 import { getAllBlogPosts } from "./data";
 
 export const metadata: Metadata = {
   title: "Blog",
   description:
-    "Tư vấn phòng trọ sinh viên, thuê trọ, ký túc xá và ký túc xá sinh viên tại Thủ Đức: phòng trọ sạch sẽ, phòng trọ giá rẻ — kinh nghiệm thực tế từ Nấm's Dormitory.",
+    "Mẹo chọn phòng trọ sinh viên, thuê trọ và ký túc xá tại Thủ Đức: tiêu chí sạch sẽ, an toàn và chi phí hợp lý — chia sẻ thực tế từ Nấm's Dormitory.",
   keywords: [
     "phòng trọ",
     "phòng trọ sinh viên",
@@ -24,8 +26,16 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Blog | Nấm's Dormitory",
     description:
-      "Bài viết SEO về phòng trọ, thuê trọ và ký túc xá sinh viên — mẹo chọn chỗ ở sạch sẽ, hợp lý tại Thủ Đức.",
+      "Bài viết về phòng trọ, thuê trọ và ký túc xá sinh viên — gợi ý chọn chỗ ở sạch sẽ, an toàn tại Thủ Đức.",
     url: "/blogs",
+    images: [{ url: "/experience/exp-1.jpg", alt: "Không gian lưu trú sinh viên hiện đại tại Thủ Đức" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Blog | Nấm's Dormitory",
+    description:
+      "Mẹo phòng trọ, thuê trọ và ký túc xá sinh viên tại Thủ Đức — kinh nghiệm thực tế.",
+    images: ["/experience/exp-1.jpg"],
   },
 };
 
@@ -39,9 +49,17 @@ function formatDate(iso: string) {
 
 export default function BlogsPage() {
   const posts = getAllBlogPosts();
+  const siteUrl = getSiteUrl();
 
   return (
     <main className="bg-[#FCFAf7] text-neutral-800 pt-24 pb-20">
+      <BreadcrumbJsonLd
+        siteUrl={siteUrl}
+        items={[
+          { name: "Trang chủ", path: "/" },
+          { name: "Blog", path: "/blogs" },
+        ]}
+      />
       <div className="container mx-auto px-6">
         <RevealOnScroll>
           <header className="max-w-3xl mb-14 md:mb-16">

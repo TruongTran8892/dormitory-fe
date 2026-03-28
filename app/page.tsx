@@ -24,6 +24,21 @@ export const metadata: Metadata = {
     description:
       "Không gian sống 'Xịn - Mịn - Sang' với tiện ích đầy đủ, vị trí thuận tiện và dịch vụ minh bạch tại Thủ Đức.",
     url: "/",
+    images: [
+      {
+        url: "/about-townhouse.jpg",
+        width: 1024,
+        height: 724,
+        alt: "Mặt tiền Nấm's Dormitory — ký túc xá và căn hộ dịch vụ tại Thủ Đức",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Nấm's Dormitory - Ký túc xá & Căn hộ dịch vụ tại Thủ Đức",
+    description:
+      "Không gian sống 'Xịn - Mịn - Sang' với tiện ích đầy đủ, vị trí thuận tiện và dịch vụ minh bạch tại Thủ Đức.",
+    images: ["/about-townhouse.jpg"],
   },
 };
 
@@ -132,7 +147,7 @@ export default function Home() {
 
             <div className="bg-white p-8 rounded-xl card-shadow border border-stone-100 flex flex-col items-center text-center">
               <span className="text-4xl mb-6 bg-premium-gold text-white p-5 rounded-full inline-block">
-                🛋️
+                📖
               </span>
               <h3 className="text-xl font-bold mb-3">Khu &quot;Chill&quot; & Sang Trọng</h3>
               <p className="text-stone-500 text-sm font-light leading-relaxed">

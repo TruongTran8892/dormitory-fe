@@ -1,7 +1,10 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import { Nunito } from "next/font/google";
 import "./globals.css";
+import LocalBusinessJsonLd from "./components/LocalBusinessJsonLd";
+import WebSiteJsonLd from "./components/WebSiteJsonLd";
+import { getSiteUrl } from "./lib/site-url";
 import RevealOnScroll from "./components/RevealOnScroll";
 import SiteFooter from "./components/SiteFooter";
 import SiteHeader from "./components/SiteHeader";
@@ -12,7 +15,20 @@ const nunito = Nunito({
   variable: "--font-nunito",
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+const siteUrl = getSiteUrl();
+
+const defaultOgImage = {
+  url: "/about-townhouse.jpg",
+  width: 1024,
+  height: 724,
+  alt: "Mặt tiền Nấm's Dormitory — ký túc xá và căn hộ dịch vụ tại Thủ Đức",
+} as const;
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#c5a059",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -34,6 +50,13 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+  ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+    ? {
+        verification: {
+          google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+        },
+      }
+    : {}),
   openGraph: {
     type: "website",
     locale: "vi_VN",
@@ -42,12 +65,14 @@ export const metadata: Metadata = {
     title: "Nấm's Dormitory - Ký túc xá & Căn hộ dịch vụ tại Thủ Đức",
     description:
       "Không gian sống riêng tư, tiện nghi trọn gói cho sinh viên tại Thủ Đức. Đăng ký xem phòng nhanh và nhận tư vấn trực tiếp.",
+    images: [defaultOgImage],
   },
   twitter: {
     card: "summary_large_image",
     title: "Nấm's Dormitory - Ký túc xá & Căn hộ dịch vụ tại Thủ Đức",
     description:
       "Ký túc xá & căn hộ dịch vụ cho sinh viên tại Thủ Đức: riêng tư, tiện nghi, vị trí thuận tiện và chi phí rõ ràng.",
+    images: [defaultOgImage.url],
   },
   robots: {
     index: true,
@@ -73,6 +98,8 @@ export default function RootLayout({
       className={`${nunito.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <WebSiteJsonLd siteUrl={siteUrl} />
+        <LocalBusinessJsonLd siteUrl={siteUrl} />
         <SiteHeader />
         <div className="flex-1 flex flex-col">{children}</div>
         <RevealOnScroll>

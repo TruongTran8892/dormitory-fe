@@ -111,3 +111,8 @@ export function getBlogPostBySlug(slug: string): BlogPost | undefined {
 export function getAllBlogSlugs(): string[] {
   return blogPosts.map((p) => p.slug);
 }
+
+/** Các bài khác (đã sắp xếp mới → cũ), loại trừ slug hiện tại */
+export function getRelatedBlogPosts(excludeSlug: string, limit = 6): BlogPost[] {
+  return getAllBlogPosts().filter((p) => p.slug !== excludeSlug).slice(0, limit);
+}

@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import BreadcrumbJsonLd from "../../components/BreadcrumbJsonLd";
 import RevealOnScroll from "../../components/RevealOnScroll";
+import BlogRelatedPosts from "../components/BlogRelatedPosts";
+import { getSiteUrl } from "../../lib/site-url";
 import { getAllBlogSlugs, getBlogPostBySlug } from "../data";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -24,10 +27,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       canonical: `/blogs/${post.slug}`,
     },
     openGraph: {
+      type: "article",
+      publishedTime: `${post.publishedAt}T12:00:00+07:00`,
       title: `${post.title} | Nấm's Dormitory`,
       description: post.excerpt,
       url: `/blogs/${post.slug}`,
       images: [{ url: post.bannerSrc, alt: post.bannerAlt }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${post.title} | Nấm's Dormitory`,
+      description: post.excerpt,
+      images: [post.bannerSrc],
     },
   };
 }
@@ -45,8 +56,18 @@ export default async function BlogDetailPage({ params }: Props) {
   const post = getBlogPostBySlug(slug);
   if (!post) notFound();
 
+  const siteUrl = getSiteUrl();
+
   return (
     <article className="bg-[#FCFAf7] text-neutral-800 pb-20">
+      <BreadcrumbJsonLd
+        siteUrl={siteUrl}
+        items={[
+          { name: "Trang chủ", path: "/" },
+          { name: "Blog", path: "/blogs" },
+          { name: post.title, path: `/blogs/${post.slug}` },
+        ]}
+      />
       {/* Dải phía trên banner — offset header cố định */}
       <div className="pt-24 bg-[#FCFAf7] border-b border-stone-200/90">
         <div className="container mx-auto px-6 py-3 md:py-4">
@@ -131,17 +152,10 @@ export default async function BlogDetailPage({ params }: Props) {
               </p>
             ))}
           </div>
-
-          <div className="mt-14 pt-10 border-t border-stone-200">
-            <Link
-              href="/blogs"
-              className="chill-transition inline-flex items-center gap-2 text-premium-gold font-semibold hover:text-[#b08d4a] rounded-md hover:opacity-95"
-            >
-              ← Xem thêm bài viết
-            </Link>
-          </div>
         </RevealOnScroll>
       </div>
+
+      <BlogRelatedPosts excludeSlug={post.slug} />
     </article>
   );
 }

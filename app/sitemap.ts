@@ -1,12 +1,12 @@
 import type { MetadataRoute } from "next";
-import { getAllBlogSlugs } from "./blogs/data";
+import { blogPosts } from "./blogs/data";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const blogEntries = getAllBlogSlugs().map((slug) => ({
-    url: `${siteUrl}/blogs/${slug}`,
-    lastModified: new Date(),
+  const blogEntries = blogPosts.map((post) => ({
+    url: `${siteUrl}/blogs/${post.slug}`,
+    lastModified: new Date(`${post.publishedAt}T12:00:00`),
     changeFrequency: "monthly" as const,
     priority: 0.7,
   }));
