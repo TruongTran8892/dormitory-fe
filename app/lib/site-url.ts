@@ -1,4 +1,10 @@
-/** URL gốc (canonical / OG / JSON-LD). Luôn set NEXT_PUBLIC_SITE_URL trên production. */
+/**
+ * URL gốc (canonical / OG / JSON-LD / sitemap / robots).
+ * Set `NEXT_PUBLIC_SITE_URL` trong `.env.production` (khi `next build`) hoặc `.env.local` (dev).
+ */
 export function getSiteUrl(): string {
-  return process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+  const fromEnv = process.env.NEXT_PUBLIC_SITE_URL?.trim();
+  if (fromEnv) return fromEnv.replace(/\/$/, "");
+
+  return "http://localhost:3000";
 }

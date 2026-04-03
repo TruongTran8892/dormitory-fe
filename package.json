@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "ci": "rm -rf node_modules && rm -rf .next && rm -rf dist&& rm -rf out&& rm -rf build && yarn install --frozen-lockfile",
     "dev": "next dev --webpack",
     "build": "next build",
     "start": "next start",
