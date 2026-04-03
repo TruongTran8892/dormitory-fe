@@ -20,7 +20,7 @@ const defaultOgImage = {
   url: "/about-townhouse.jpg",
   width: 1024,
   height: 724,
-  alt: "Mặt tiền Nấm's Dormitory — ký túc xá và căn hộ dịch vụ tại Thủ Đức",
+  alt: "Nấm's Dormitory Thủ Đức — ký túc xá, căn hộ dịch vụ và KTX cao cấp, phòng trọ sinh viên",
 } as const;
 
 export const viewport: Viewport = {

@@ -26,7 +26,7 @@ export const metadata: Metadata = {
         url: "/about-townhouse.jpg",
         width: 1024,
         height: 724,
-        alt: "Mặt tiền Nấm's Dormitory — ký túc xá và căn hộ dịch vụ tại Thủ Đức",
+        alt: "Nấm's Dormitory Thủ Đức — ký túc xá, căn hộ dịch vụ và chỗ ở sinh viên, KTX cao cấp",
       },
     ],
   },
@@ -45,7 +45,7 @@ export default function Home() {
       <section className="relative min-h-[90vh] flex items-center overflow-hidden pt-20 md:pt-24">
         <Image
           src={`https://drive.google.com/thumbnail?id=${HERO_IMAGE_DRIVE_ID}&sz=w2200`}
-          alt="Không gian nội thất ký túc xá tại Nấm's Dormitory"
+          alt="Ký túc xá và căn hộ dịch vụ Nấm's Dormitory Thủ Đức — không gian nội thất KTX cao cấp cho sinh viên"
           fill
           priority
           sizes="100vw"
@@ -163,7 +163,7 @@ export default function Home() {
               </p>
               <h2 className="text-4xl md:text-5xl font-extrabold mb-8 leading-tight tracking-tight text-neutral-900">
                 Vị trí &quot;Vàng&quot; Thủ Đức. <br />
-                <span className="text-premium-gold text-[0.85em] font-semibold">
+                <span className="text-premium-gold text-[0.65em] font-extrabold">
                   Kết nối nhanh các Trường ĐH trọng điểm.
                 </span>
               </h2>
@@ -186,8 +186,10 @@ export default function Home() {
               </a>
 
               <ul className="space-y-5 text-sm font-medium text-neutral-700 italic border-l border-premium-gold pl-6">
-                <li>📍 Gần ĐH Ngân hàng</li>
-                <li>📍 Gần Cao đẳng Công nghệ (TĐ)</li>
+                <li>📍 Gần ĐH Ngân hàng (2 phút đi bộ)</li>
+                <li>📍 Gần Cao đẳng Công nghệ Thủ Đức (4 phút đi bộ)</li>
+                <li>📍 Gần Cao đẳng kinh tế kỹ thuật Thủ Đức</li>
+                <li>📍 Gần trường Cao đẳng nghề TP HCM (cơ sở 2)</li>
                 <li>📍 Gần ĐH An ninh nhân dân</li>
                 <li>📍 Gần ĐH Sư phạm Kỹ thuật (SPKT)</li>
                 <li>📍 Gần các trạm xe buýt lớn và tiện ích xung quanh</li>
@@ -215,7 +217,12 @@ export default function Home() {
             </p>
             <div className="space-y-2 text-stone-200 text-sm md:text-base font-medium">
               <p className="flex items-center gap-2">
-                <Image src="/zalo-logo.svg" alt="" aria-hidden="true" width={20} height={20} />
+                <Image
+                  src="/zalo-logo.svg"
+                  alt="Zalo Nấm's Dormitory — liên hệ ký túc xá và căn hộ dịch vụ sinh viên Thủ Đức"
+                  width={20}
+                  height={20}
+                />
                 <span>
                   Zalo:{" "}
                   <a
@@ -227,7 +234,12 @@ export default function Home() {
                 </span>
               </p>
               <p className="flex items-center gap-2">
-                <Image src="/phone-logo.svg" alt="" aria-hidden="true" width={20} height={20} />
+                <Image
+                  src="/phone-logo.svg"
+                  alt="Hotline Nấm's Dormitory — tư vấn phòng trọ sinh viên và chỗ ở KTX cao cấp Thủ Đức"
+                  width={20}
+                  height={20}
+                />
                 <span>
                   Điện thoại:{" "}
                   <a

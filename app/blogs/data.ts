@@ -30,8 +30,10 @@ export const blogPosts: BlogPost[] = [
     ],
     thumbnailSrc: "/experience/exp-1.jpg",
     bannerSrc: "/experience/exp-2.jpg",
-    thumbnailAlt: "Không gian lưu trú sinh viên hiện đại tại Thủ Đức — phòng trọ và ký túc xá",
-    bannerAlt: "Khu ký túc xá và phòng trọ sinh viên có thiết kế gọn gàng, đủ ánh sáng",
+    thumbnailAlt:
+      "Nấm's Dormitory Thủ Đức — phòng trọ sinh viên, thuê trọ và ký túc xá cao cấp, căn hộ dịch vụ",
+    bannerAlt:
+      "Ký túc xá và phòng trọ sinh viên Nấm's Dormitory — KTX Thủ Đức gọn gàng, đủ ánh sáng",
     publishedAt: "2026-03-20",
     content: [
       "Khi lên đại học, hầu hết sinh viên đều phải quyết định giữa các hình thức chỗ ở: thuê trọ phòng đơn, ở ghép, hay chọn ký túc xá sinh viên / mô hình tương đương. Mỗi lựa chọn có ưu điểm riêng; điều quan trọng là khớp với thói quen sinh hoạt, tuyến đường đi học và mức chi phí bạn cam kết được trong thời gian dài.",
@@ -58,8 +60,10 @@ export const blogPosts: BlogPost[] = [
     ],
     thumbnailSrc: "/experience/exp-4.jpg",
     bannerSrc: "/experience/exp-4.jpg",
-    thumbnailAlt: "Phòng trọ và ký túc xá sạch sẽ, gọn gàng cho sinh viên",
-    bannerAlt: "Không gian phòng trọ sạch sẽ, đủ ánh sáng tự nhiên",
+    thumbnailAlt:
+      "Phòng trọ sạch sẽ Nấm's Dormitory Thủ Đức — ký túc xá sinh viên và thuê trọ an toàn",
+    bannerAlt:
+      "Phòng trọ sạch sẽ và ký túc xá Nấm's Dormitory — chỗ ở sinh viên Thủ Đức, đủ sáng tự nhiên",
     publishedAt: "2026-03-12",
     content: [
       "Tiêu chí phòng trọ sạch sẽ không chỉ là sàn lau bóng khi đi xem, mà còn là mùi ẩm, nấm mốc góc tường, thoát nước nhà vệ sinh và tình trạng rác khu chung. Sinh viên thường ở liên tục nhiều tháng; một phòng ẩm sẽ ảnh hưởng sức khỏe và chất lượng học tập, dù giá có hấp dẫn đến đâu.",
@@ -84,8 +88,10 @@ export const blogPosts: BlogPost[] = [
     ],
     thumbnailSrc: "/experience/exp-6.jpg",
     bannerSrc: "/experience/exp-3.jpg",
-    thumbnailAlt: "Sinh viên tìm phòng trọ giá rẻ và ký túc xá tại Thủ Đức",
-    bannerAlt: "Khu nhà trọ và ký túc xá khu vực Thủ Đức",
+    thumbnailAlt:
+      "Phòng trọ giá rẻ và ký túc xá sinh viên Nấm's Dormitory — thuê trọ Thủ Đức",
+    bannerAlt:
+      "Nấm's Dormitory Thủ Đức — so sánh phòng trọ giá rẻ, ký túc xá và căn hộ dịch vụ sinh viên",
     publishedAt: "2026-03-05",
     content: [
       "Phòng trọ giá rẻ là cụm từ được tìm kiếm nhiều nhất mỗi mùa tuyển sinh, nhưng mức giá thấp đôi khi đi kèm vị trí xa trường, điện nước tính theo đồng hồ riêng hoặc thiếu thiết bị an toàn cháy nổ. Sinh viên nên yêu cầu bảng giá điện nước theo quy định và hóa đơn minh bạch để tránh bị “đội” phí cuối tháng.",

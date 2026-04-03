@@ -16,7 +16,7 @@ export default function SiteFooter() {
             >
               <Image
                 src="/logo-nams-dom.svg"
-                alt="Nấm's Dormitory"
+                alt="Nấm's Dormitory — ký túc xá Thủ Đức, KTX cao cấp và căn hộ dịch vụ cho sinh viên"
                 width={180}
                 height={50}
                 className="h-10 w-auto"

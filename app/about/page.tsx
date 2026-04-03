@@ -22,7 +22,7 @@ export const metadata: Metadata = {
         url: "/about-townhouse.jpg",
         width: 1024,
         height: 724,
-        alt: "Mặt tiền căn nhà Nấm's Dormitory — kiến trúc hiện đại nhiều tầng",
+        alt: "Mặt tiền Nấm's Dormitory Thủ Đức — ký túc xá và căn hộ dịch vụ sinh viên, kiến trúc hiện đại",
       },
     ],
   },
@@ -99,7 +99,7 @@ export default function AboutPage() {
                 src="/about-townhouse.jpg"
                 width={1024}
                 height={724}
-                alt="Mặt tiền căn nhà Nấm's Dormitory — nhà phố hiện đại nhiều tầng, ban công và ánh đèn ấm"
+                alt="Mặt tiền Nấm's Dormitory Thủ Đức — ký túc xá và căn hộ dịch vụ sinh viên, nhà phố hiện đại nhiều tầng"
                 className="w-full h-auto rounded-xl block object-contain"
                 sizes="(max-width: 1024px) 100vw, (max-width: 1536px) 50vw, 720px"
                 quality={92}

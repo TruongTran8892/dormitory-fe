@@ -88,6 +88,8 @@ export default function BookingForm() {
         >
           <option>ĐH Ngân hàng</option>
           <option>Cao đẳng Công nghệ</option>
+          <option>Cao đẳng Kinh tế Kỹ thuật Thủ Đức</option>
+          <option>Cao đẳng nghề TP HCM (cơ sở 2)</option>
           <option>ĐH An ninh nhân dân</option>
           <option>ĐH SPKT</option>
           <option>Khác</option>

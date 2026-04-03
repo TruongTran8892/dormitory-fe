@@ -48,7 +48,7 @@ export default function SiteHeader() {
         <Link href="/" className="chill-transition cursor-pointer inline-block rounded-md hover:opacity-90 hover:scale-[1.02]">
           <Image
             src="/logo-nams-dom.svg"
-            alt="Nấm's Dormitory"
+            alt="Nấm's Dormitory — logo ký túc xá và căn hộ dịch vụ sinh viên Thủ Đức"
             width={220}
             height={60}
             priority

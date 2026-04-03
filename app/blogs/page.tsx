@@ -28,7 +28,12 @@ export const metadata: Metadata = {
     description:
       "Bài viết về phòng trọ, thuê trọ và ký túc xá sinh viên — gợi ý chọn chỗ ở sạch sẽ, an toàn tại Thủ Đức.",
     url: "/blogs",
-    images: [{ url: "/experience/exp-1.jpg", alt: "Không gian lưu trú sinh viên hiện đại tại Thủ Đức" }],
+    images: [
+      {
+        url: "/experience/exp-1.jpg",
+        alt: "Blog Nấm's Dormitory — phòng trọ, thuê trọ, ký túc xá sinh viên và căn hộ dịch vụ Thủ Đức",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
