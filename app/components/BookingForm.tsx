@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { submitLeadToSheet } from "../lib/submitLeadToSheet";
 
 export default function BookingForm() {
   const [name, setName] = useState("");
@@ -14,24 +15,16 @@ export default function BookingForm() {
     if (isSubmitting) return;
     setIsSubmitting(true);
 
-    // Save lead to server-side API (which forwards to Google Sheet webhook).
     try {
-      const res = await fetch("/api/leads", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name,
-          contact,
-          school,
-          source: "Website Nấm's Dormitory",
-          createdAt: new Date().toISOString(),
-        }),
+      const result = await submitLeadToSheet({
+        name,
+        contact,
+        school,
+        source: "Website Nấm's Dormitory",
+        createdAt: new Date().toISOString(),
       });
-      const result = (await res.json()) as { ok: boolean; message?: string };
-      if (!res.ok || !result.ok) {
-        if (result?.message === "Missing GOOGLE_SHEET_WEBHOOK_URL") {
+      if (!result.ok) {
+        if (result.message === "Missing GOOGLE_SHEET_WEBHOOK_URL") {
           setStatus("Hệ thống chưa cấu hình kết nối Google Sheet. Vui lòng báo quản trị viên.");
         } else {
           setStatus("Gửi đăng ký chưa thành công. Vui lòng thử lại sau ít phút.");

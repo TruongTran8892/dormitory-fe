@@ -30,8 +30,9 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
-.env*
+# env — giữ .env.production / .env.example trong repo; secret dùng .env hoặc *.local
+.env
+.env*.local
 
 # vercel
 .vercel
